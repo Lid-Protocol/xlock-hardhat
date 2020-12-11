@@ -20,7 +20,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
     IXeth private _xeth;
     address private _uniswapFactory;
     
-    address private _sweepReceiver;
+    address public _sweepReceiver;
     uint public _maxXEthWad;
     uint public _maxTokenWad;
 
