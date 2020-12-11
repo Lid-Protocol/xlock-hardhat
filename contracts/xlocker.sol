@@ -21,8 +21,8 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
     address private _uniswapFactory;
     
     address private _sweepReceiver;
-    uint private _maxXEthWad;
-    uint private _maxTokenWad;
+    uint public _maxXEthWad;
+    uint public _maxTokenWad;
 
     mapping(address => uint) public pairSwept;
     mapping(address => bool) public pairRegistered;
