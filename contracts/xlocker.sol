@@ -21,22 +21,34 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
     address private _uniswapFactory;
     
     address private _sweepReceiver;
+    uint private _maxXEthWad;
+    uint private _maxTokenWad;
 
     mapping(address => uint) public pairSwept;
     mapping(address => bool) public pairRegistered;
     address[] public allRegisteredPairs;
     uint public totalRegisteredPairs;
 
-    function initialize(IXeth xeth_, address sweepReceiver_) public initializer {
+    function initialize(IXeth xeth_, address sweepReceiver_, uint maxXEthWad_, uint maxTokenWad_) public initializer {
         OwnableUpgradeSafe.__Ownable_init();
         _uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
         _uniswapFactory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
         _xeth = xeth_;
         _sweepReceiver = sweepReceiver_;
+        _maxXEthWad = maxXEthWad_;
+        _maxTokenWad = maxTokenWad_;
     }
 
     function setSweepReceiver(address sweepReceiver_) external onlyOwner {
         _sweepReceiver = sweepReceiver_;
+    }
+
+    function setMaxXEthWad(uint maxXEthWad_) external onlyOwner {
+        _maxXEthWad = maxXEthWad_;
+    }
+
+    function setMaxTokenWad(uint maxTokenWad_) external onlyOwner {
+        _maxTokenWad = maxTokenWad_;
     }
     
     function launchERC20(string calldata name, string calldata symbol, uint wadToken, uint wadXeth) external override returns (address token_, address pair_) {
@@ -132,9 +144,9 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
         return burnedXeth.sub(pairSwept[address(pair)]);
     }
 
-    function _preLaunchChecks(uint wadToken, uint wadXeth) internal pure {
-        require(wadToken <= 2 ** 100, "wadToken>2**100");
-        require(wadXeth <= 2 ** 100, "wadXeth>2**100");
+    function _preLaunchChecks(uint wadToken, uint wadXeth) internal view {
+        require(wadToken <= _maxTokenWad, "wadToken>_maxTokenWad");
+        require(wadXeth <= _maxXEthWad, "wadXeth>_maxXEthWad");
     }
 
     function _lockLiquidity(uint wadToken, uint wadXeth, address token) internal returns (address pair) {
