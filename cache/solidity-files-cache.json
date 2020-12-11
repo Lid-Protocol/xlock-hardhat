@@ -519,50 +519,6 @@
         "Initializable"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/xlocker.sol": {
-      "lastModificationDate": 1607715306398,
-      "sourceName": "contracts/xlocker.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
-        "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
-        "./ERC20/SafeMath.sol",
-        "./ERC20/ERC20.sol",
-        "./ERC20/ERC20TransferTax.sol",
-        "./Uniswap/IUniswapV2Pair.sol",
-        "./Uniswap/IUniswapV2Router02.sol",
-        "./Uniswap/UniswapV2Library.sol",
-        "./interfaces/IXeth.sol",
-        "./interfaces/IXlocker.sol"
-      ],
-      "versionPragmas": [
-        "=0.6.6"
-      ],
-      "artifacts": [
-        "XLOCKER"
-      ]
-    },
     "/Users/admin/Downloads/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol": {
       "lastModificationDate": 1607714272189,
       "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
@@ -632,6 +588,50 @@
       ],
       "artifacts": [
         "ContextUpgradeSafe"
+      ]
+    },
+    "/Users/admin/Downloads/xlock-hardhat/contracts/xlocker.sol": {
+      "lastModificationDate": 1607715874363,
+      "sourceName": "contracts/xlocker.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+        "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
+        "./ERC20/SafeMath.sol",
+        "./ERC20/ERC20.sol",
+        "./ERC20/ERC20TransferTax.sol",
+        "./Uniswap/IUniswapV2Pair.sol",
+        "./Uniswap/IUniswapV2Router02.sol",
+        "./Uniswap/UniswapV2Library.sol",
+        "./interfaces/IXeth.sol",
+        "./interfaces/IXlocker.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "XLOCKER"
       ]
     }
   }
