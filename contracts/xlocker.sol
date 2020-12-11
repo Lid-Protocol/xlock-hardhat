@@ -20,22 +20,23 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
     IXeth private _xeth;
     address private _uniswapFactory;
     
-    address private _xdev;
+    address private _sweepReceiver;
 
     mapping(address => uint) public pairSwept;
     mapping(address => bool) public pairRegistered;
     address[] public allRegisteredPairs;
     uint public totalRegisteredPairs;
 
-    function initialize(IXeth xeth_) public initializer {
+    function initialize(IXeth xeth_, address sweepReceiver_) public initializer {
         OwnableUpgradeSafe.__Ownable_init();
         _uniswapRouter = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
         _uniswapFactory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
         _xeth = xeth_;
+        _sweepReceiver = sweepReceiver_;
     }
 
-    function setXDev(address xdev_) external onlyOwner {
-        _xdev = xdev_;
+    function setSweepReceiver(address sweepReceiver_) external onlyOwner {
+        _sweepReceiver = sweepReceiver_;
     }
     
     function launchERC20(string calldata name, string calldata symbol, uint wadToken, uint wadXeth) external override returns (address token_, address pair_) {
@@ -74,7 +75,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
         return (token_, pair_);
     }
 
-    //Sweeps liquidity provider fees for _xdev
+    //Sweeps liquidity provider fees for _sweepReceiver
     function sweep(IUniswapV2Pair[] calldata pairs) external {
         require(pairs.length < 256, "pairs.length>=256");
         uint8 i;
@@ -84,7 +85,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
             uint availableToSweep = sweepAmountAvailable(pair);
             if(availableToSweep != 0){
                 pairSwept[address(pair)] += availableToSweep;
-                _xeth.xlockerMint(availableToSweep, _xdev);
+                _xeth.xlockerMint(availableToSweep, _sweepReceiver);
             }
 
         }
