@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-1",
   "files": {
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/Address.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/Address.sol": {
+      "lastModificationDate": 1607936094515,
       "sourceName": "contracts/ERC20/Address.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -34,8 +34,8 @@
         "Address"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/SafeERC20.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/SafeERC20.sol": {
+      "lastModificationDate": 1607936094516,
       "sourceName": "contracts/ERC20/SafeERC20.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -71,8 +71,8 @@
         "SafeERC20"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/IERC20.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/IERC20.sol": {
+      "lastModificationDate": 1607936094516,
       "sourceName": "contracts/ERC20/IERC20.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -104,8 +104,8 @@
         "IERC20"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/SafeMath.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/SafeMath.sol": {
+      "lastModificationDate": 1607936094516,
       "sourceName": "contracts/ERC20/SafeMath.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -137,8 +137,8 @@
         "SafeMath"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/ERC20TransferTax.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/ERC20TransferTax.sol": {
+      "lastModificationDate": 1607936094515,
       "sourceName": "contracts/ERC20/ERC20TransferTax.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -175,8 +175,8 @@
         "ERC20TransferTax"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/Context.sol": {
-      "lastModificationDate": 1607709300634,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/Context.sol": {
+      "lastModificationDate": 1607936094515,
       "sourceName": "contracts/ERC20/Context.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -208,390 +208,8 @@
         "Context"
       ]
     },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/ERC20/ERC20.sol": {
-      "lastModificationDate": 1607709300634,
-      "sourceName": "contracts/ERC20/ERC20.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./Context.sol",
-        "./IERC20.sol",
-        "./SafeERC20.sol",
-        "./SafeMath.sol"
-      ],
-      "versionPragmas": [
-        ">=0.6.0 <0.8.0"
-      ],
-      "artifacts": [
-        "ERC20"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/Uniswap/IUniswapV2Pair.sol": {
-      "lastModificationDate": 1607709300634,
-      "sourceName": "contracts/Uniswap/IUniswapV2Pair.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.5.0"
-      ],
-      "artifacts": [
-        "IUniswapV2Pair"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/Uniswap/IUniswapV2Router02.sol": {
-      "lastModificationDate": 1607709300634,
-      "sourceName": "contracts/Uniswap/IUniswapV2Router02.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IUniswapV2Router01.sol"
-      ],
-      "versionPragmas": [
-        ">=0.6.2"
-      ],
-      "artifacts": [
-        "IUniswapV2Router02"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/Uniswap/UniswapV2Library.sol": {
-      "lastModificationDate": 1607709300634,
-      "sourceName": "contracts/Uniswap/UniswapV2Library.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./IUniswapV2Pair.sol",
-        "../ERC20/SafeMath.sol"
-      ],
-      "versionPragmas": [
-        ">=0.5.0"
-      ],
-      "artifacts": [
-        "UniswapV2Library"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/Uniswap/IUniswapV2Router01.sol": {
-      "lastModificationDate": 1607709300634,
-      "sourceName": "contracts/Uniswap/IUniswapV2Router01.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.6.2"
-      ],
-      "artifacts": [
-        "IUniswapV2Router01"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/interfaces/IXeth.sol": {
-      "lastModificationDate": 1607712238300,
-      "sourceName": "contracts/interfaces/IXeth.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../ERC20/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "=0.6.6"
-      ],
-      "artifacts": [
-        "IXeth"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/interfaces/IXlocker.sol": {
-      "lastModificationDate": 1607712328796,
-      "sourceName": "contracts/interfaces/IXlocker.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "=0.6.6"
-      ],
-      "artifacts": [
-        "IXlocker"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/xeth.sol": {
-      "lastModificationDate": 1607711906044,
-      "sourceName": "contracts/xeth.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/IXeth.sol"
-      ],
-      "versionPragmas": [
-        "=0.6.6"
-      ],
-      "artifacts": [
-        "XETH"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol": {
-      "lastModificationDate": 1607714272119,
-      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.4.24 <0.7.0"
-      ],
-      "artifacts": [
-        "Initializable"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol": {
-      "lastModificationDate": 1607714272189,
-      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../GSN/Context.sol",
-        "../Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.6.0"
-      ],
-      "artifacts": [
-        "OwnableUpgradeSafe"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol": {
-      "lastModificationDate": 1607714271953,
-      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "../Initializable.sol"
-      ],
-      "versionPragmas": [
-        "^0.6.0"
-      ],
-      "artifacts": [
-        "ContextUpgradeSafe"
-      ]
-    },
-    "/Users/admin/Downloads/xlock-hardhat/contracts/xlocker.sol": {
-      "lastModificationDate": 1607716957174,
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xlocker.sol": {
+      "lastModificationDate": 1607936094517,
       "sourceName": "contracts/xlocker.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -632,6 +250,388 @@
       ],
       "artifacts": [
         "XLOCKER"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol": {
+      "lastModificationDate": 1607936444839,
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.24 <0.7.0"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol": {
+      "lastModificationDate": 1607936444842,
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../GSN/Context.sol",
+        "../Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.6.0"
+      ],
+      "artifacts": [
+        "OwnableUpgradeSafe"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/ERC20.sol": {
+      "lastModificationDate": 1607936094515,
+      "sourceName": "contracts/ERC20/ERC20.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Context.sol",
+        "./IERC20.sol",
+        "./SafeERC20.sol",
+        "./SafeMath.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Pair.sol": {
+      "lastModificationDate": 1607936094516,
+      "sourceName": "contracts/Uniswap/IUniswapV2Pair.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "IUniswapV2Pair"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Router02.sol": {
+      "lastModificationDate": 1607936094517,
+      "sourceName": "contracts/Uniswap/IUniswapV2Router02.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IUniswapV2Router01.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router02"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/UniswapV2Library.sol": {
+      "lastModificationDate": 1607936094517,
+      "sourceName": "contracts/Uniswap/UniswapV2Library.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IUniswapV2Pair.sol",
+        "../ERC20/SafeMath.sol"
+      ],
+      "versionPragmas": [
+        ">=0.5.0"
+      ],
+      "artifacts": [
+        "UniswapV2Library"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/interfaces/IXeth.sol": {
+      "lastModificationDate": 1607936094517,
+      "sourceName": "contracts/interfaces/IXeth.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "IXeth"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/interfaces/IXlocker.sol": {
+      "lastModificationDate": 1607936094517,
+      "sourceName": "contracts/interfaces/IXlocker.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "IXlocker"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol": {
+      "lastModificationDate": 1607936444806,
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.6.0"
+      ],
+      "artifacts": [
+        "ContextUpgradeSafe"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Router01.sol": {
+      "lastModificationDate": 1607936094516,
+      "sourceName": "contracts/Uniswap/IUniswapV2Router01.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IUniswapV2Router01"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xeth.sol": {
+      "lastModificationDate": 1607936094517,
+      "sourceName": "contracts/xeth.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IXeth.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "XETH"
       ]
     }
   }
