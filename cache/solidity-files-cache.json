@@ -1,8 +1,9 @@
 {
-  "_format": "hh-sol-cache-1",
+  "_format": "hh-sol-cache-2",
   "files": {
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/Address.sol": {
       "lastModificationDate": 1607936094515,
+      "contentHash": "820f8e45b152ff66db91f0329bb8d440",
       "sourceName": "contracts/ERC20/Address.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -36,6 +37,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/SafeERC20.sol": {
       "lastModificationDate": 1607936094516,
+      "contentHash": "84d047d0d46dd77a81221dd2f3ca4e74",
       "sourceName": "contracts/ERC20/SafeERC20.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -73,6 +75,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/IERC20.sol": {
       "lastModificationDate": 1607936094516,
+      "contentHash": "a9285b69713352630ecad5d10009c2b7",
       "sourceName": "contracts/ERC20/IERC20.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -106,6 +109,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/SafeMath.sol": {
       "lastModificationDate": 1607936094516,
+      "contentHash": "566b2491fad23ee068a57712059232a5",
       "sourceName": "contracts/ERC20/SafeMath.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -139,6 +143,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/ERC20TransferTax.sol": {
       "lastModificationDate": 1607936094515,
+      "contentHash": "68625042e9ceb004c558f8a348939c9c",
       "sourceName": "contracts/ERC20/ERC20TransferTax.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -177,6 +182,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/Context.sol": {
       "lastModificationDate": 1607936094515,
+      "contentHash": "8da707c8f0100469dafd0368d003cca2",
       "sourceName": "contracts/ERC20/Context.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -210,6 +216,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xlocker.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "c53a526d0f1719a591e75503059b04fa",
       "sourceName": "contracts/xlocker.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -254,6 +261,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol": {
       "lastModificationDate": 1607936444839,
+      "contentHash": "402d88f041ed1754339d60ae70077cd9",
       "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -287,6 +295,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol": {
       "lastModificationDate": 1607936444842,
+      "contentHash": "3aa0c3038c55f2e2c14205311a71e879",
       "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -323,6 +332,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/ERC20/ERC20.sol": {
       "lastModificationDate": 1607936094515,
+      "contentHash": "ebd30800f5835e7f38aad47f460c2f0f",
       "sourceName": "contracts/ERC20/ERC20.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -361,6 +371,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Pair.sol": {
       "lastModificationDate": 1607936094516,
+      "contentHash": "d021d78f40daea7a0f06e1d2eed0e968",
       "sourceName": "contracts/Uniswap/IUniswapV2Pair.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -394,6 +405,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Router02.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "80fe41a75f324f97077b644aada14867",
       "sourceName": "contracts/Uniswap/IUniswapV2Router02.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -429,6 +441,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/UniswapV2Library.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "30c56e53b83644d868c8fd08a326cfd1",
       "sourceName": "contracts/Uniswap/UniswapV2Library.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -465,6 +478,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/interfaces/IXeth.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "87dbb702a89bc43d145a33ff544c49a6",
       "sourceName": "contracts/interfaces/IXeth.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -500,6 +514,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/interfaces/IXlocker.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "0903c4f098187b091f5f795f74f9fb55",
       "sourceName": "contracts/interfaces/IXlocker.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -533,6 +548,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol": {
       "lastModificationDate": 1607936444806,
+      "contentHash": "29ba4a35181267b3aab4563990e56909",
       "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -568,6 +584,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/Uniswap/IUniswapV2Router01.sol": {
       "lastModificationDate": 1607936094516,
+      "contentHash": "9afab4f62c4c89da823ae70d778ac67c",
       "sourceName": "contracts/Uniswap/IUniswapV2Router01.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -601,6 +618,7 @@
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xeth.sol": {
       "lastModificationDate": 1607936094517,
+      "contentHash": "94a48365d86e1e1cc7ed61124e5d4c99",
       "sourceName": "contracts/xeth.sol",
       "solcConfig": {
         "version": "0.6.6",

@@ -1,5 +1,6 @@
 require("@nomiclabs/hardhat-ethers");
 require('@openzeppelin/hardhat-upgrades');
+require("@nomiclabs/hardhat-etherscan");
 
 const loadJsonFile = require('load-json-file')
 const keys = loadJsonFile.sync("./keys.json")
@@ -37,5 +38,8 @@ module.exports = {
     },
     mocha: {
       timeout: 20000
+    },
+    etherscan: {
+      apiKey: "DUMQWHVAG4IXE2287UAKE3ZD144YJSZSTI"
     }
   }
