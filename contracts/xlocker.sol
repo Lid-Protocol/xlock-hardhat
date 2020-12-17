@@ -58,7 +58,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
         //Launch new token
         token_ = address(new ERC20(name, symbol, wadToken));
 
-        //Lock symbol/ueth liquidity
+        //Lock symbol/xeth liquidity
         pair_ = _lockLiquidity(wadToken, wadXeth, token_);
 
         //Register pair for sweeping
@@ -78,7 +78,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
         token.transferTaxman(taxMan);
         token_ = address(token);
 
-        //Lock symbol/ueth liquidity
+        //Lock symbol/xeth liquidity
         pair_ = _lockLiquidity(wadToken, wadXeth, token_);
 
         //Register pair for sweeping
@@ -135,7 +135,7 @@ contract XLOCKER is Initializable, IXlocker, OwnableUpgradeSafe {
                     token.totalSupply().sub(reserveLockedToken),
                     //Burned token in Uniswap reserves (reserveIn)
                     reserveLockedToken,
-                    //Burned uEth in Uniswap reserves (reserveOut)
+                    //Burned xEth in Uniswap reserves (reserveOut)
                     reserveLockedXeth
                 )
             );

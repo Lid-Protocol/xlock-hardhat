@@ -12,5 +12,5 @@ interface IXeth is IERC20 {
     function nonces(address owner) external view returns (uint256);
     event Deposit(address indexed dst, uint wad);
     event Withdrawal(address indexed src, uint wad);
-    event UlockerMint(uint wad, address dst);
+    event XlockerMint(uint wad, address dst);
 }

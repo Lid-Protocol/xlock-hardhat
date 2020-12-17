@@ -45,7 +45,7 @@ contract XETH is IXeth {
     }
 
     function xlockerMint(uint wad, address dst) external override {
-        require(msg.sender == xlocker, "!ulocker");
+        require(msg.sender == xlocker, "!xlocker");
         balanceOf[dst] += wad;
         totalSupply += wad;
         emit Transfer(address(0), dst, wad);
