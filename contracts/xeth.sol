@@ -49,7 +49,7 @@ contract XETH is IXeth, AccessControlUpgradeSafe {
     }
 
     function xlockerMint(uint wad, address dst) external override {
-        require(msg.sender == xlocker, "!xlocker");
+        require(hasRole(XETH_LOCKER_ROLE, msg.sender), "Caller is not xeth locker");
         balanceOf[dst] += wad;
         totalSupply += wad;
         emit Transfer(address(0), dst, wad);
