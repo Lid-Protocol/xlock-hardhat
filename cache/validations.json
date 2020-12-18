@@ -111,6 +111,283 @@
         }
       }
     },
+    "Address": {
+      "version": {
+        "withMetadata": "2bb417e055af5a3da170b54445280e7eab8caa9b23da8a9441e70c7e32e67163",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "EnumerableSet": {
+      "version": {
+        "withMetadata": "e24079f815f6c043555e94580dd8a3441349976b3fda24e277067070a5741016",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "struct-definition",
+          "name": "Set",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:37"
+        },
+        {
+          "kind": "struct-definition",
+          "name": "AddressSet",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:135"
+        },
+        {
+          "kind": "struct-definition",
+          "name": "UintSet",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:190"
+        }
+      ],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IERC20": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IXeth": {
+      "inherit": [
+        "IERC20"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "XETH": {
+      "version": {
+        "withMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936",
+        "withoutMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936",
+        "linkedWithoutMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936"
+      },
+      "inherit": [
+        "AccessControlUpgradeSafe",
+        "ContextUpgradeSafe",
+        "Initializable",
+        "IXeth",
+        "IERC20"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "constructor",
+          "contract": "XETH",
+          "src": "contracts/xeth.sol:26"
+        },
+        {
+          "kind": "state-variable-assignment",
+          "name": "PERMIT_TYPEHASH",
+          "src": "contracts/xeth.sol:15"
+        },
+        {
+          "kind": "state-variable-immutable",
+          "name": "PERMIT_TYPEHASH",
+          "src": "contracts/xeth.sol:15"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "XETH",
+            "label": "name",
+            "type": "t_string_storage",
+            "src": "contracts/xeth.sol:9"
+          },
+          {
+            "contract": "XETH",
+            "label": "symbol",
+            "type": "t_string_storage",
+            "src": "contracts/xeth.sol:10"
+          },
+          {
+            "contract": "XETH",
+            "label": "decimals",
+            "type": "t_uint8",
+            "src": "contracts/xeth.sol:11"
+          },
+          {
+            "contract": "XETH",
+            "label": "totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/xeth.sol:12"
+          },
+          {
+            "contract": "XETH",
+            "label": "balanceOf",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/xeth.sol:22"
+          },
+          {
+            "contract": "XETH",
+            "label": "nonces",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/xeth.sol:23"
+          },
+          {
+            "contract": "XETH",
+            "label": "allowance",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts/xeth.sol:24"
+          }
+        ],
+        "types": {
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          }
+        }
+      }
+    }
+  },
+  {
+    "ContextUpgradeSafe": {
+      "version": {
+        "withMetadata": "38e8f5fd4895d7e4dfdebd7ba56d08c421f65d3dfcdf7917f862618f65e59c70",
+        "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+        "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+      },
+      "inherit": [
+        "Initializable"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "ContextUpgradeSafe",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol:37"
+          }
+        ],
+        "types": {
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "Initializable": {
+      "version": {
+        "withMetadata": "9d248b85b3822e4e9bb01be169424d7ca855892834028cf884368e85bd750832",
+        "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+        "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:26"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:61"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "AccessControlUpgradeSafe": {
+      "inherit": [
+        "ContextUpgradeSafe",
+        "Initializable"
+      ],
+      "libraries": [
+        "EnumerableSet",
+        "Address"
+      ],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "struct-definition",
+          "name": "RoleData",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:53"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "AccessControlUpgradeSafe",
+            "label": "_roles",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)157_storage)",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:58"
+          },
+          {
+            "contract": "AccessControlUpgradeSafe",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:210"
+          }
+        ],
+        "types": {
+          "t_mapping(t_bytes32,t_struct(RoleData)157_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeSafe.RoleData)"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          }
+        }
+      }
+    },
     "OwnableUpgradeSafe": {
       "version": {
         "withMetadata": "61386844ee0552aa09f4d02caac6e40beb82f1da2e82167bc45a784b6bdfbfbc",
