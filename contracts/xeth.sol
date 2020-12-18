@@ -2,15 +2,17 @@
 pragma solidity =0.6.6;
 // Copyright (C) 2015, 2016, 2017 Dapphub / adapted by udev 2020
 
+import "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol";
 import "./interfaces/IXeth.sol";
 
-contract XETH is IXeth {
+contract XETH is IXeth, AccessControlUpgradeSafe {
     string public name;
     string public symbol;
     uint8  public decimals;
     address xlocker;
     uint public override totalSupply;
 
+    bytes32 public constant XETH_LOCKER_ROLE = keccak256("XETH_LOCKER_ROLE");
     bytes32 public immutable PERMIT_TYPEHASH = keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
 
     event  Approval(address indexed src, address indexed guy, uint wad);
@@ -27,6 +29,7 @@ contract XETH is IXeth {
         symbol = "XETH";
         decimals = 18;
         xlocker = msg.sender;
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     receive() external payable {
@@ -42,6 +45,7 @@ contract XETH is IXeth {
     function transferXlocker(address xlocker_) external {
         require(xlocker==msg.sender, "xlocker!=msg.sender");
         xlocker = xlocker_;
+        _setupRole(XETH_LOCKER_ROLE, xlocker);
     }
 
     function xlockerMint(uint wad, address dst) external override {

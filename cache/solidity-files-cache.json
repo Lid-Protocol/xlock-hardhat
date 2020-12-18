@@ -617,8 +617,8 @@
       ]
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xeth.sol": {
-      "lastModificationDate": 1608172332703,
-      "contentHash": "bb38f8289dc11f592dc151d088f9de44",
+      "lastModificationDate": 1608251951947,
+      "contentHash": "28786ae03483f94f395873f9cde2e94c",
       "sourceName": "contracts/xeth.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -643,6 +643,7 @@
         }
       },
       "imports": [
+        "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol",
         "./interfaces/IXeth.sol"
       ],
       "versionPragmas": [
@@ -650,6 +651,113 @@
       ],
       "artifacts": [
         "XETH"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol": {
+      "lastModificationDate": 1607936444801,
+      "contentHash": "d8932bf1735d53a1b6954331afc1e8d6",
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/EnumerableSet.sol",
+        "../utils/Address.sol",
+        "../GSN/Context.sol",
+        "../Initializable.sol"
+      ],
+      "versionPragmas": [
+        "^0.6.0"
+      ],
+      "artifacts": [
+        "AccessControlUpgradeSafe"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol": {
+      "lastModificationDate": 1607936444808,
+      "contentHash": "70a75b95955d808020ec348297465a32",
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.0"
+      ],
+      "artifacts": [
+        "EnumerableSet"
+      ]
+    },
+    "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/node_modules/@openzeppelin/contracts-ethereum-package/contracts/utils/Address.sol": {
+      "lastModificationDate": 1607936444803,
+      "contentHash": "079b4185b8794e6abce0f0c79ffeb8f5",
+      "sourceName": "@openzeppelin/contracts-ethereum-package/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.6.2"
+      ],
+      "artifacts": [
+        "Address"
       ]
     }
   }
