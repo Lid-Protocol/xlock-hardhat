@@ -14,8 +14,8 @@ async function main() {
     await xlocker.deployed()
     console.log("xlocker deployed to:", xlocker.address)
 
-    await xeth.transferXlocker(xlocker.address)
-    console.log("xlocker permission on xeth transferred")
+    await xeth.grantXethLockerRole(xlocker.address)
+    console.log("xlocker permission on xeth granted")
   }
   
   main()

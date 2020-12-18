@@ -9,7 +9,6 @@ contract XETH is IXeth, AccessControlUpgradeSafe {
     string public name;
     string public symbol;
     uint8  public decimals;
-    address xlocker;
     uint public override totalSupply;
 
     bytes32 public constant XETH_LOCKER_ROLE = keccak256("XETH_LOCKER_ROLE");
@@ -28,7 +27,6 @@ contract XETH is IXeth, AccessControlUpgradeSafe {
         name = "xlock.eth Wrapped Ether";
         symbol = "XETH";
         decimals = 18;
-        xlocker = msg.sender;
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
@@ -42,10 +40,12 @@ contract XETH is IXeth, AccessControlUpgradeSafe {
         emit Deposit(msg.sender, msg.value);
     }
 
-    function transferXlocker(address xlocker_) external {
-        require(xlocker==msg.sender, "xlocker!=msg.sender");
-        xlocker = xlocker_;
-        _setupRole(XETH_LOCKER_ROLE, xlocker);
+    function grantXethLockerRole(address account) external {
+        grantRole(XETH_LOCKER_ROLE, account);
+    }
+
+    function revokeXethLockerRole(address account) external {
+        revokeRole(XETH_LOCKER_ROLE, account);
     }
 
     function xlockerMint(uint wad, address dst) external override {

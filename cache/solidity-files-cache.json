@@ -617,8 +617,8 @@
       ]
     },
     "/Users/admin/Documents/workspace/lid-protocol/xlock-hardhat/contracts/xeth.sol": {
-      "lastModificationDate": 1608252448247,
-      "contentHash": "05be695c89064f96e3c58a6c86c054b5",
+      "lastModificationDate": 1608254126293,
+      "contentHash": "0fd9d6ab05ccbe9be98feee87e40a219",
       "sourceName": "contracts/xeth.sol",
       "solcConfig": {
         "version": "0.6.6",

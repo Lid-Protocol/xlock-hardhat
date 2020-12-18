@@ -510,6 +510,718 @@
     },
     "XETH": {
       "version": {
+        "withMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936",
+        "withoutMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936",
+        "linkedWithoutMetadata": "1cc976cb15fb87749808a2848a1550701ccd444370adee9f3d177da9807af936"
+      },
+      "inherit": [
+        "AccessControlUpgradeSafe",
+        "ContextUpgradeSafe",
+        "Initializable",
+        "IXeth",
+        "IERC20"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "constructor",
+          "contract": "XETH",
+          "src": "contracts/xeth.sol:26"
+        },
+        {
+          "kind": "state-variable-assignment",
+          "name": "PERMIT_TYPEHASH",
+          "src": "contracts/xeth.sol:15"
+        },
+        {
+          "kind": "state-variable-immutable",
+          "name": "PERMIT_TYPEHASH",
+          "src": "contracts/xeth.sol:15"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "XETH",
+            "label": "name",
+            "type": "t_string_storage",
+            "src": "contracts/xeth.sol:9"
+          },
+          {
+            "contract": "XETH",
+            "label": "symbol",
+            "type": "t_string_storage",
+            "src": "contracts/xeth.sol:10"
+          },
+          {
+            "contract": "XETH",
+            "label": "decimals",
+            "type": "t_uint8",
+            "src": "contracts/xeth.sol:11"
+          },
+          {
+            "contract": "XETH",
+            "label": "totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/xeth.sol:12"
+          },
+          {
+            "contract": "XETH",
+            "label": "balanceOf",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/xeth.sol:22"
+          },
+          {
+            "contract": "XETH",
+            "label": "nonces",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/xeth.sol:23"
+          },
+          {
+            "contract": "XETH",
+            "label": "allowance",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts/xeth.sol:24"
+          }
+        ],
+        "types": {
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          }
+        }
+      }
+    },
+    "XLOCKER": {
+      "version": {
+        "withMetadata": "7a7d3fdf90f6057b57d6df973722f71e4dfa988edc91ae6006eecfb8cfc20f7e",
+        "withoutMetadata": "496c2661a40d26743c31c0b3d39f1d538b9a60ae895ff5182927baa71c2246f4",
+        "linkedWithoutMetadata": "496c2661a40d26743c31c0b3d39f1d538b9a60ae895ff5182927baa71c2246f4"
+      },
+      "inherit": [
+        "OwnableUpgradeSafe",
+        "ContextUpgradeSafe",
+        "IXlocker",
+        "Initializable"
+      ],
+      "libraries": [
+        "SafeMath",
+        "UniswapV2Library"
+      ],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "XLOCKER",
+            "label": "_uniswapRouter",
+            "type": "t_contract(IUniswapV2Router02)3618",
+            "src": "contracts/xlocker.sol:19"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "_xeth",
+            "type": "t_contract(IXeth)4153",
+            "src": "contracts/xlocker.sol:20"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "_uniswapFactory",
+            "type": "t_address",
+            "src": "contracts/xlocker.sol:21"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "_sweepReceiver",
+            "type": "t_address",
+            "src": "contracts/xlocker.sol:23"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "_maxXEthWad",
+            "type": "t_uint256",
+            "src": "contracts/xlocker.sol:24"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "_maxTokenWad",
+            "type": "t_uint256",
+            "src": "contracts/xlocker.sol:25"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "pairSwept",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/xlocker.sol:27"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "pairRegistered",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/xlocker.sol:28"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "allRegisteredPairs",
+            "type": "t_array(t_address)dyn_storage",
+            "src": "contracts/xlocker.sol:29"
+          },
+          {
+            "contract": "XLOCKER",
+            "label": "totalRegisteredPairs",
+            "type": "t_uint256",
+            "src": "contracts/xlocker.sol:30"
+          }
+        ],
+        "types": {
+          "t_contract(IUniswapV2Router02)3618": {
+            "label": "contract IUniswapV2Router02"
+          },
+          "t_contract(IXeth)4153": {
+            "label": "contract IXeth"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          }
+        }
+      }
+    }
+  },
+  {
+    "ContextUpgradeSafe": {
+      "version": {
+        "withMetadata": "38e8f5fd4895d7e4dfdebd7ba56d08c421f65d3dfcdf7917f862618f65e59c70",
+        "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+        "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+      },
+      "inherit": [
+        "Initializable"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "ContextUpgradeSafe",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol:37"
+          }
+        ],
+        "types": {
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "Initializable": {
+      "version": {
+        "withMetadata": "9d248b85b3822e4e9bb01be169424d7ca855892834028cf884368e85bd750832",
+        "withoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b",
+        "linkedWithoutMetadata": "ac0db523ddc3e330f735df7b3b0b24460531c71290a891170e840f8f67d5ff6b"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:21"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:26"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol:61"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "AccessControlUpgradeSafe": {
+      "inherit": [
+        "ContextUpgradeSafe",
+        "Initializable"
+      ],
+      "libraries": [
+        "EnumerableSet",
+        "Address"
+      ],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "struct-definition",
+          "name": "RoleData",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:53"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "AccessControlUpgradeSafe",
+            "label": "_roles",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)157_storage)",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:58"
+          },
+          {
+            "contract": "AccessControlUpgradeSafe",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.sol:210"
+          }
+        ],
+        "types": {
+          "t_mapping(t_bytes32,t_struct(RoleData)157_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeSafe.RoleData)"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          }
+        }
+      }
+    },
+    "OwnableUpgradeSafe": {
+      "version": {
+        "withMetadata": "61386844ee0552aa09f4d02caac6e40beb82f1da2e82167bc45a784b6bdfbfbc",
+        "withoutMetadata": "fc533e2b5136b9a67a5b476cf3ee05c2914b5b0ca10d85a9559f90ba2d1e3dbb",
+        "linkedWithoutMetadata": "fc533e2b5136b9a67a5b476cf3ee05c2914b5b0ca10d85a9559f90ba2d1e3dbb"
+      },
+      "inherit": [
+        "ContextUpgradeSafe",
+        "Initializable"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [
+          {
+            "contract": "OwnableUpgradeSafe",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol:18"
+          },
+          {
+            "contract": "OwnableUpgradeSafe",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol:78"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          }
+        }
+      }
+    },
+    "Address": {
+      "version": {
+        "withMetadata": "f22e6ef3f66d1c8b504e9923ecdc0656f45a27d088c9740b8343d969465df59c",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "delegatecall",
+          "src": "contracts/ERC20/Address.sol:167"
+        }
+      ],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "EnumerableSet": {
+      "version": {
+        "withMetadata": "e24079f815f6c043555e94580dd8a3441349976b3fda24e277067070a5741016",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "struct-definition",
+          "name": "Set",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:37"
+        },
+        {
+          "kind": "struct-definition",
+          "name": "AddressSet",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:135"
+        },
+        {
+          "kind": "struct-definition",
+          "name": "UintSet",
+          "src": "@openzeppelin/contracts-ethereum-package/contracts/utils/EnumerableSet.sol:190"
+        }
+      ],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "Context": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "ERC20": {
+      "version": {
+        "withMetadata": "545c18313faf05e68a14cd2c7be847e65bf3451654cb702f5e21ba3939b7e411",
+        "withoutMetadata": "95a00ffedb00051e3831953e7d129b07f4f1ba1e2766cbd6161b4e746700b58c",
+        "linkedWithoutMetadata": "95a00ffedb00051e3831953e7d129b07f4f1ba1e2766cbd6161b4e746700b58c"
+      },
+      "inherit": [
+        "IERC20",
+        "Context"
+      ],
+      "libraries": [
+        "SafeMath",
+        "SafeERC20"
+      ],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "constructor",
+          "contract": "ERC20",
+          "src": "contracts/ERC20/ERC20.sol:58"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "ERC20",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/ERC20/ERC20.sol:39"
+          },
+          {
+            "contract": "ERC20",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts/ERC20/ERC20.sol:41"
+          },
+          {
+            "contract": "ERC20",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/ERC20/ERC20.sol:43"
+          },
+          {
+            "contract": "ERC20",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts/ERC20/ERC20.sol:45"
+          },
+          {
+            "contract": "ERC20",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts/ERC20/ERC20.sol:46"
+          },
+          {
+            "contract": "ERC20",
+            "label": "_decimals",
+            "type": "t_uint8",
+            "src": "contracts/ERC20/ERC20.sol:47"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    },
+    "ERC20TransferTax": {
+      "version": {
+        "withMetadata": "1789417df1993171cccae50cfc9003552e8a0d890d599c07f788ca604620f008",
+        "withoutMetadata": "b242da1618064f08d36b2ab623f02d40760af962729f15981a1ce712e02e436d",
+        "linkedWithoutMetadata": "b242da1618064f08d36b2ab623f02d40760af962729f15981a1ce712e02e436d"
+      },
+      "inherit": [
+        "IERC20",
+        "Context"
+      ],
+      "libraries": [
+        "SafeMath",
+        "SafeERC20"
+      ],
+      "linkReferences": [],
+      "errors": [
+        {
+          "kind": "constructor",
+          "contract": "ERC20TransferTax",
+          "src": "contracts/ERC20/ERC20TransferTax.sol:63"
+        }
+      ],
+      "layout": {
+        "storage": [
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_balances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:39"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:41"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:43"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:45"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:46"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "_decimals",
+            "type": "t_uint8",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:47"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "taxBips",
+            "type": "t_uint256",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:49"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "taxMan",
+            "type": "t_address",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:50"
+          },
+          {
+            "contract": "ERC20TransferTax",
+            "label": "isNotTaxed",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/ERC20/ERC20TransferTax.sol:51"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          }
+        }
+      }
+    },
+    "IERC20": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "SafeERC20": {
+      "version": {
+        "withMetadata": "9d8aa301c8db1a5ce44f6308c3e94023f522bbc95d4bb59c0de04beac6668bd1",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [
+        "SafeMath",
+        "Address"
+      ],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "SafeMath": {
+      "version": {
+        "withMetadata": "5f2b0e3d21b74cac990f7251297254bf66f517ddfb800170caf5db935bbbc9b3",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IUniswapV2Pair": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IUniswapV2Router01": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IUniswapV2Router02": {
+      "inherit": [
+        "IUniswapV2Router01"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "UniswapV2Library": {
+      "version": {
+        "withMetadata": "045cc92d562e2a07a89b5525161b22fbd25928d62e37af9d88ee643b650c6221",
+        "withoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8",
+        "linkedWithoutMetadata": "aaa148c474cd10e1a6cd0a52c0b55f1aa9b7bb7b42d7f1cb5acaea4f42f04bc8"
+      },
+      "inherit": [],
+      "libraries": [
+        "SafeMath"
+      ],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IXeth": {
+      "inherit": [
+        "IERC20"
+      ],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "IXlocker": {
+      "inherit": [],
+      "libraries": [],
+      "linkReferences": [],
+      "errors": [],
+      "layout": {
+        "storage": [],
+        "types": {}
+      }
+    },
+    "XETH": {
+      "version": {
         "withMetadata": "374ed8ea26967a98917edff35f539d49fdc87f40704165e9750ba935e17700a0",
         "withoutMetadata": "374ed8ea26967a98917edff35f539d49fdc87f40704165e9750ba935e17700a0",
         "linkedWithoutMetadata": "374ed8ea26967a98917edff35f539d49fdc87f40704165e9750ba935e17700a0"
