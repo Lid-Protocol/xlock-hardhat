@@ -1,7 +1,7 @@
 {
-  "name": "xlock-hardhat",
+  "name": "@lidprotocol/xlock-hardhat",
   "version": "1.0.0",
-  "author": "udev",
+  "author": "lidprotocol",
   "license": "GPL-3.0-only",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
