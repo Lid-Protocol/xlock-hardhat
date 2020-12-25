@@ -2,7 +2,7 @@
 xLock is an open, 0 fee defi platform for infinite locked liquidity. Forked from uLock, inspired by rootkit.
 
 ##Dapp
-https://xeth.eth.link
+https://xlock.eth.link
 Connect with Metamask, then launch your new token with as much xETH liquidity as you like. Or exchange xETH for ETH at a 1:1 ratio. All circulating xEth is backed 1:1 by ETH.
 
 ## Contract deployments
