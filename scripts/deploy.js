@@ -10,7 +10,7 @@ async function main() {
     await xeth.deployed()
     console.log("xeth deployed to:", xeth.address)
 
-    const xlocker = await upgrades.deployProxy(Xlocker, [xeth.address, "0xb63c4F8eCBd1ab926Ed9Cb90c936dffC0eb02cE2", BigNumber.from("1000000000000000000000000"), BigNumber.from("1000000000000000000000000000000")])
+    const xlocker = await upgrades.deployProxy(Xlocker, [xeth.address, "0x4735581201F4cAD63CCa0716AB4ac7D6d9CFB0ed", BigNumber.from("1000000000000000000000000"), BigNumber.from("1000000000000000000000000000000")])
     await xlocker.deployed()
     console.log("xlocker deployed to:", xlocker.address)
 

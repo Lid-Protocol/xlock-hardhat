@@ -1,9 +1,10 @@
-const { ethers, upgrades } = require("hardhat")
+const { ethers, upgrades } = require("hardhat");
+const XlockerAddress = "0xAA13f1Fc73baB751Da08930007D4D847EeEafAA2";
 
 async function main() {
-    // const BoxV2 = await ethers.getContractFactory("BoxV2");
-    // const box = await upgrades.upgradeProxy(BOX_ADDRESS, BoxV2);
-    // console.log("Box upgraded");
+    const Xeth = await ethers.getContractFactory("XETH")
+    const Xlocker = await upgrades.upgradeProxy(XlockerAddress, Xlocker);
+    console.log("xlocker upgraded");
   }
   
   main()
