@@ -32,13 +32,13 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         IXEth xeth_,
         address sweepReceiver_,
         uint256 maxXEthWad_,
-        uint256 maxTokenWad_
+        uint256 maxTokenWad_,
+        IUniswapV2Router02 uniswapRouter_,
+        address uniswapFactory_
     ) public initializer {
         OwnableUpgradeSafe.__Ownable_init();
-        _uniswapRouter = IUniswapV2Router02(
-            0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
-        );
-        _uniswapFactory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+        _uniswapRouter = uniswapRouter_;
+        _uniswapFactory = uniswapFactory_;
         _xeth = xeth_;
         _sweepReceiver = sweepReceiver_;
         _maxXEthWad = maxXEthWad_;
@@ -55,6 +55,14 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
 
     function setMaxTokenWad(uint256 maxTokenWad_) external onlyOwner {
         _maxTokenWad = maxTokenWad_;
+    }
+    
+    function setUniswapRouter(IUniswapV2Router02 uniswapRouter_) external onlyOwner {
+        _uniswapRouter = uniswapRouter_;
+    }
+
+    function setUniswapFactory(address uniswapFactory_) external onlyOwner {
+        _uniswapFactory = uniswapFactory_;
     }
 
     function launchERC20(
