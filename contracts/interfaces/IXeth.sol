@@ -2,7 +2,7 @@
 pragma solidity =0.6.6;
 // Copyright (C) udev 2020
 
-import "../ERC20/IERC20.sol";
+import "@uniswap/v2-core/contracts/interfaces/IERC20.sol";
 
 interface IXEth is IERC20 {
     function deposit() external payable;

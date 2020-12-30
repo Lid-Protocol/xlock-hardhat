@@ -3,12 +3,12 @@ pragma solidity =0.6.6;
 
 import "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol";
 import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
-import "./ERC20/SafeMath.sol";
-import "./ERC20/ERC20.sol";
+import "./ERC20/ERC20Standard.sol";
 import "./ERC20/ERC20TransferTax.sol";
-import "./Uniswap/IUniswapV2Pair.sol";
-import "./Uniswap/IUniswapV2Router02.sol";
-import "./Uniswap/UniswapV2Library.sol";
+import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
+import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import "./interfaces/IXEth.sol";
 import "./interfaces/IXLocker.sol";
 
@@ -56,8 +56,11 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
     function setMaxTokenWad(uint256 maxTokenWad_) external onlyOwner {
         _maxTokenWad = maxTokenWad_;
     }
-    
-    function setUniswapRouter(IUniswapV2Router02 uniswapRouter_) external onlyOwner {
+
+    function setUniswapRouter(IUniswapV2Router02 uniswapRouter_)
+        external
+        onlyOwner
+    {
         _uniswapRouter = uniswapRouter_;
     }
 
@@ -75,7 +78,7 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         _preLaunchChecks(wadToken, wadXeth);
 
         //Launch new token
-        token_ = address(new ERC20(name, symbol, wadToken));
+        token_ = address(new ERC20Standard(name, symbol, wadToken));
 
         //Lock symbol/xeth liquidity
         pair_ = _lockLiquidity(wadToken, wadXeth, token_);
@@ -163,13 +166,9 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         uint256 totalLP = pair.totalSupply();
 
         uint256 reserveLockedXeth =
-            uint256(xethIsToken0 ? reserve0 : reserve1).mul(burnedLP).div(
-                totalLP
-            );
+            uint256(xethIsToken0 ? reserve0 : reserve1).mul(burnedLP) / totalLP;
         uint256 reserveLockedToken =
-            uint256(xethIsToken0 ? reserve1 : reserve0).mul(burnedLP).div(
-                totalLP
-            );
+            uint256(xethIsToken0 ? reserve1 : reserve0).mul(burnedLP) / totalLP;
 
         uint256 burnedXeth;
         if (reserveLockedToken == token.totalSupply()) {
@@ -205,18 +204,8 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         IERC20(token).approve(address(_uniswapRouter), wadToken);
         _xeth.approve(address(_uniswapRouter), wadXeth);
 
-        _uniswapRouter.addLiquidity(
-            token,
-            address(_xeth),
-            wadToken,
-            wadXeth,
-            wadToken,
-            wadXeth,
-            address(0),
-            now
-        );
+        pair = _addLiquidity(IERC20(token), IERC20(_xeth), wadToken, wadXeth);
 
-        pair = UniswapV2Library.pairFor(_uniswapFactory, token, address(_xeth));
         pairSwept[pair] = wadXeth;
         return pair;
     }
@@ -225,5 +214,24 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         pairRegistered[pair] = true;
         allRegisteredPairs.push(pair);
         totalRegisteredPairs = totalRegisteredPairs.add(1);
+    }
+
+    function _addLiquidity(
+        IERC20 token,
+        IERC20 xeth,
+        uint256 wadToken,
+        uint256 wadXeth
+    ) internal returns (address pair) {
+        pair = IUniswapV2Factory(_uniswapFactory).createPair(
+            address(xeth),
+            address(token)
+        );
+        (uint256 reserve0, uint256 reserve1, ) =
+            IUniswapV2Pair(pair).getReserves();
+        require(reserve0 == 0 && reserve1 == 0, "Pair already has reserves");
+
+        require(token.transfer(pair, wadToken), "Transfer Failed");
+        require(xeth.transfer(pair, wadXeth), "Transfer Failed");
+        IUniswapV2Pair(pair).mint(address(0x0));
     }
 }

@@ -6,9 +6,9 @@ import "@openzeppelin/contracts-ethereum-package/contracts/access/AccessControl.
 import "./interfaces/IXEth.sol";
 
 contract XETH is IXEth, AccessControlUpgradeSafe {
-    string public name;
-    string public symbol;
-    uint8 public decimals;
+    string public override name;
+    string public override symbol;
+    uint8 public override decimals;
     uint256 public override totalSupply;
 
     bytes32 public constant XETH_LOCKER_ROLE = keccak256("XETH_LOCKER_ROLE");
