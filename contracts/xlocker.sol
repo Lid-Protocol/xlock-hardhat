@@ -3,7 +3,7 @@ pragma solidity =0.6.6;
 
 import "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol";
 import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
-import "./ERC20/ERC20Standard.sol";
+import "./ERC20/ERC20Blacklist.sol";
 import "./ERC20/ERC20TransferTax.sol";
 import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
@@ -27,6 +27,8 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
     mapping(address => bool) public pairRegistered;
     address[] public allRegisteredPairs;
     uint256 public totalRegisteredPairs;
+
+    mapping(address => address) public pairBlacklistManager;
 
     function initialize(
         IXEth xeth_,
@@ -78,13 +80,41 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         _preLaunchChecks(wadToken, wadXeth);
 
         //Launch new token
-        token_ = address(new ERC20Standard(name, symbol, wadToken));
+        token_ = address(
+            new ERC20Blacklist(name, symbol, wadToken, address(this))
+        );
 
         //Lock symbol/xeth liquidity
         pair_ = _lockLiquidity(wadToken, wadXeth, token_);
 
         //Register pair for sweeping
         _registerPair(pair_);
+
+        return (token_, pair_);
+    }
+
+    function launchERC20Blacklist(
+        string calldata name,
+        string calldata symbol,
+        uint256 wadToken,
+        uint256 wadXeth,
+        address blacklistManager
+    ) external override returns (address token_, address pair_) {
+        //Checks
+        _preLaunchChecks(wadToken, wadXeth);
+
+        //Launch new token
+        token_ = address(
+            new ERC20Blacklist(name, symbol, wadToken, address(this))
+        );
+
+        //Lock symbol/xeth liquidity
+        pair_ = _lockLiquidity(wadToken, wadXeth, token_);
+
+        //Register pair for sweeping
+        _registerPair(pair_);
+
+        pairBlacklistManager[pair_] = blacklistManager;
 
         return (token_, pair_);
     }
@@ -121,6 +151,18 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         _registerPair(pair_);
 
         return (token_, pair_);
+    }
+
+    function setBlacklistUniswapBuys(
+        address pair,
+        address token,
+        bool isBlacklisted
+    ) external override {
+        require(
+            msg.sender == pairBlacklistManager[pair],
+            "xlocker: sender not blacklist manager for pair."
+        );
+        ERC20Blacklist(token).setSendBlacklist(pair, isBlacklisted);
     }
 
     //Sweeps liquidity provider fees for _sweepReceiver

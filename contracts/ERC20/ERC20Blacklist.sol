@@ -32,7 +32,7 @@ import "./SafeERC20.sol";
  * functions have been added to mitigate the well-known issues around setting
  * allowances. See {IERC20-approve}.
  */
-contract ERC20Standard is Context, IERC20 {
+contract ERC20Blacklist is Context, IERC20 {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -46,6 +46,10 @@ contract ERC20Standard is Context, IERC20 {
     string private _symbol;
     uint8 private _decimals;
 
+    address public blacklistManager;
+    mapping(address => bool) public sendBlacklist;
+    mapping(address => bool) public receiveBlacklist;
+
     /**
      * @dev Sets the values for {name} and {symbol}, initializes {decimals} with
      * a default value of 18.
@@ -58,12 +62,36 @@ contract ERC20Standard is Context, IERC20 {
     constructor(
         string memory name_,
         string memory symbol_,
-        uint256 amount
+        uint256 amount,
+        address blacklistManager_
     ) public {
         _name = name_;
         _symbol = symbol_;
         _decimals = 18;
+        blacklistManager = blacklistManager_;
         _mint(msg.sender, amount);
+    }
+
+    modifier onlyBlacklistManager() {
+        require(
+            msg.sender == blacklistManager,
+            "ERC20Blacklist: sender is not blacklistManager"
+        );
+        _;
+    }
+
+    function setReceiveBlacklist(address recipient, bool isBlacklisted)
+        external
+        onlyBlacklistManager
+    {
+        receiveBlacklist[recipient] = isBlacklisted;
+    }
+
+    function setSendBlacklist(address sender, bool isBlacklisted)
+        external
+        onlyBlacklistManager
+    {
+        sendBlacklist[sender] = isBlacklisted;
     }
 
     /**
@@ -260,6 +288,11 @@ contract ERC20Standard is Context, IERC20 {
     ) internal virtual {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
+        require(!sendBlacklist[sender], "ERC20Blacklist: sender blacklisted");
+        require(
+            !receiveBlacklist[recipient],
+            "ERC20Blacklist: recipient blacklisted"
+        );
 
         _beforeTokenTransfer(sender, recipient, amount);
 
