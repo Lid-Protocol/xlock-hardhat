@@ -81,7 +81,7 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
 
         //Launch new token
         token_ = address(
-            new ERC20Blacklist(name, symbol, wadToken, address(this))
+            new ERC20Blacklist(name, symbol, wadToken, address(0x0))
         );
 
         //Lock symbol/xeth liquidity
