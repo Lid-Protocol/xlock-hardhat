@@ -1116,7 +1116,7 @@
       ]
     },
     "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\_hardhat-dependency-compiler\\@uniswap\\v2-periphery\\contracts\\UniswapV2Router02.sol": {
-      "lastModificationDate": 1611285005488,
+      "lastModificationDate": 1611287166792,
       "contentHash": "c34208fc0924e62db0365059ef91da31",
       "sourceName": "contracts/_hardhat-dependency-compiler/@uniswap/v2-periphery/contracts/UniswapV2Router02.sol",
       "solcConfig": {
