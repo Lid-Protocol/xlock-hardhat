@@ -14,7 +14,7 @@ xlocker logic: `0xcf81bb0836b8157611a84be08a453b3abb1ca479`
 ### Ropsten
 xeth: `0xA2F864C1c1a27f257c10FfBCFAeCa252B5610B4b`
 xlocker proxy: `0x45a0A95Df3DAE8A9741328a0b7ce04DF55C22124`
-xlocker logic: `0xec99e3e28abd1d9a724b8639ec02cdeaae2e90fe`
+xlocker logic: `0x56f7575a80BB4d5C2C96cB4dD29f0604216dcc6A`
 
 
 ## Installation
