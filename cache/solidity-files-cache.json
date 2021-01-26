@@ -322,8 +322,8 @@
       ]
     },
     "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\xlocker.sol": {
-      "lastModificationDate": 1611256985936,
-      "contentHash": "6f404b863f7c7b935eaf7ba62ed95e08",
+      "lastModificationDate": 1611622643459,
+      "contentHash": "de4346b3393c38a0c9de7156b918ce52",
       "sourceName": "contracts/xlocker.sol",
       "solcConfig": {
         "version": "0.6.6",
@@ -1116,7 +1116,7 @@
       ]
     },
     "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\_hardhat-dependency-compiler\\@uniswap\\v2-periphery\\contracts\\UniswapV2Router02.sol": {
-      "lastModificationDate": 1611287166792,
+      "lastModificationDate": 1611628709201,
       "contentHash": "c34208fc0924e62db0365059ef91da31",
       "sourceName": "contracts/_hardhat-dependency-compiler/@uniswap/v2-periphery/contracts/UniswapV2Router02.sol",
       "solcConfig": {

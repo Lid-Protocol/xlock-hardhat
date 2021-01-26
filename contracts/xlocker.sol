@@ -47,6 +47,13 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         _maxTokenWad = maxTokenWad_;
     }
 
+    function registerPair(address pair) external onlyOwner {
+        require(!pairRegistered[pair], "Pair already registered.");
+        pairRegistered[pair] = true;
+        allRegisteredPairs.push(pair);
+        totalRegisteredPairs = totalRegisteredPairs.add(1);
+    }
+
     function setSweepReceiver(address sweepReceiver_) external onlyOwner {
         _sweepReceiver = sweepReceiver_;
     }
