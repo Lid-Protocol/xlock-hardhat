@@ -1116,7 +1116,7 @@
       ]
     },
     "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\_hardhat-dependency-compiler\\@uniswap\\v2-periphery\\contracts\\UniswapV2Router02.sol": {
-      "lastModificationDate": 1611703010690,
+      "lastModificationDate": 1611792294013,
       "contentHash": "c34208fc0924e62db0365059ef91da31",
       "sourceName": "contracts/_hardhat-dependency-compiler/@uniswap/v2-periphery/contracts/UniswapV2Router02.sol",
       "solcConfig": {
@@ -1222,6 +1222,83 @@
         "ERC20Blacklist"
       ]
     },
+    "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\xethLiqManager.sol": {
+      "lastModificationDate": 1611792268596,
+      "contentHash": "2160b516a069a48388aee72b8c62640e",
+      "sourceName": "contracts/xethLiqManager.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IXEth.sol",
+        "@uniswap/lib/contracts/libraries/Babylonian.sol",
+        "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol",
+        "@uniswap/v2-periphery/contracts/libraries/SafeMath.sol",
+        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol",
+        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
+        "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+        "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "XethLiqManager"
+      ]
+    },
+    "C:\\Users\\great\\repos\\xlock-hardhat\\node_modules\\@uniswap\\lib\\contracts\\libraries\\Babylonian.sol": {
+      "lastModificationDate": 1609300836344,
+      "contentHash": "c1c9269c5671ee79dc6b477c4a8aaf96",
+      "sourceName": "@uniswap/lib/contracts/libraries/Babylonian.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.0"
+      ],
+      "artifacts": [
+        "Babylonian"
+      ]
+    },
     "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\interfaces\\IXEth.sol": {
       "lastModificationDate": 1609302506278,
       "contentHash": "efb83c86699f869050dfe5e2b0c556d5",
@@ -1290,48 +1367,6 @@
       ],
       "artifacts": [
         "IXLocker"
-      ]
-    },
-    "C:\\Users\\great\\repos\\xlock-hardhat\\contracts\\xethLiqManager.sol": {
-      "lastModificationDate": 1611702932325,
-      "contentHash": "b06b6d831420d1cacd9f66be729ce8ad",
-      "sourceName": "contracts/xethLiqManager.sol",
-      "solcConfig": {
-        "version": "0.6.6",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/IXEth.sol",
-        "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol",
-        "@uniswap/v2-periphery/contracts/libraries/SafeMath.sol",
-        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol",
-        "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
-        "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
-        "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol"
-      ],
-      "versionPragmas": [
-        "=0.6.6"
-      ],
-      "artifacts": [
-        "XethLiqManager"
       ]
     }
   }

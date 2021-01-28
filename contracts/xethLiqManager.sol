@@ -2,6 +2,7 @@
 pragma solidity =0.6.6;
 
 import "./interfaces/IXEth.sol";
+import "@uniswap/lib/contracts/libraries/Babylonian.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import "@uniswap/v2-periphery/contracts/libraries/SafeMath.sol";
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
@@ -12,9 +13,10 @@ import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
 contract XethLiqManager is Initializable, OwnableUpgradeSafe {
     IXEth private _xeth;
     IUniswapV2Router02 private _router;
-    uint256 private _maxBP;
     IUniswapV2Pair private _pair;
     IUniswapV2Factory private _factory;
+    uint256 private _maxBP;
+    uint256 private _maxLiq;
     bool private isPairInitialized;
 
     using SafeMath for uint256;
@@ -23,21 +25,29 @@ contract XethLiqManager is Initializable, OwnableUpgradeSafe {
         IXEth xeth_,
         IUniswapV2Router02 router_,
         IUniswapV2Factory factory_,
-        uint256 maxBP_
+        uint256 maxBP_,
+        uint256 maxLiq_
     ) public initializer {
         OwnableUpgradeSafe.__Ownable_init();
         _xeth = xeth_;
         _router = router_;
         _factory = factory_;
         _maxBP = maxBP_;
+        _maxLiq = maxLiq_;
     }
+
+    receive() external payable {}
 
     function setMaxBP(uint256 maxBP_) external onlyOwner {
         require(maxBP_ < 10000, "maxBP too large");
         _maxBP = maxBP_;
     }
 
-    function initializePair() external {
+    function setMaxLiq(uint256 maxLiq_) external onlyOwner {
+        _maxLiq = maxLiq_;
+    }
+
+    function initializePair() external onlyOwner {
         require(!isPairInitialized, "weth/xeth pair already initialized");
         isPairInitialized = true;
         uint256 wadXeth = address(_xeth).balance.mul(_maxBP) / 10000;
@@ -83,18 +93,23 @@ contract XethLiqManager is Initializable, OwnableUpgradeSafe {
             );
             _xeth.deposit{value: address(this).balance}();
             _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
-        } else if (currentLockedXeth < expectedLockedXeth) {
+        } else if (
+            currentLockedXeth < expectedLockedXeth &&
+            currentLockedXeth < _maxLiq
+        ) {
             uint256 delta = expectedLockedXeth.sub(currentLockedXeth);
-            _xeth.xlockerMint(delta.mul(2), address(this));
+            _xeth.xlockerMint(delta.mul(2).add(1 ether), address(this));
             _xeth.withdraw(delta);
             _router.addLiquidityETH{value: delta}(
                 address(_xeth),
                 delta,
-                delta,
-                delta,
+                delta.sub(1 ether),
+                delta.sub(1 ether),
                 address(this),
                 now
             );
+            _xeth.deposit{value: address(this).balance}();
+            _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
         }
     }
 
@@ -103,28 +118,33 @@ contract XethLiqManager is Initializable, OwnableUpgradeSafe {
         uint256 wethReserves = IERC20(_router.WETH()).balanceOf(address(_pair));
 
         address[] memory path = new address[](2);
-        if (xethReserves > wethReserves) {
+        if (xethReserves.sub(0.01 ether) > wethReserves) {
             path[0] = _router.WETH();
             path[1] = address(_xeth);
-            uint256 wadDif = xethReserves.sub(wethReserves) / 2;
+            uint256 wadDif =
+                Babylonian.sqrt(xethReserves.mul(wethReserves)).sub(
+                    wethReserves
+                );
             _xeth.xlockerMint(wadDif, address(this));
             _xeth.withdraw(wadDif);
             _router.swapExactETHForTokens{value: wadDif}(
-                wadDif.sub(1000),
+                wadDif.sub(0.01 ether),
                 path,
                 address(0x0),
                 now
             );
             _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
-        } else if (xethReserves < wethReserves) {
+        } else if (xethReserves.add(0.01 ether) < wethReserves) {
             path[0] = address(_xeth);
             path[1] = _router.WETH();
-            uint256 wadDif = uint256(wethReserves - xethReserves) / 2;
+            uint256 wadDif =
+                Babylonian.sqrt(xethReserves.mul(wethReserves)).sub(
+                    xethReserves
+                );
             _xeth.xlockerMint(wadDif, address(this));
-            _xeth.withdraw(wadDif);
             _router.swapExactTokensForETH(
                 wadDif,
-                wadDif.sub(1000),
+                wadDif.sub(0.01 ether),
                 path,
                 address(this),
                 now
