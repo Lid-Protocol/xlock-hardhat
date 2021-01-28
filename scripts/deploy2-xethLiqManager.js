@@ -2,7 +2,7 @@ const { BigNumber } = require("ethers");
 const { ethers, upgrades } = require("hardhat");
 
 const addresses = {
-  xeth: "0xA2F864C1c1a27f257c10FfBCFAeCa252B5610B4b",
+  xeth: "0x29B109625ac15BC4577d0b70ACB9e4E27F7C07E8",
   router: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
   factory: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
 }
@@ -28,7 +28,7 @@ async function main() {
     await xeth.grantXethLockerRole(xethLiqManager.address);
 
     console.log("Waiting 5 minutes...")
-    await (()=> new Promise ((resolve)=>setTimeoute(resolve,300000)))();
+    await (()=> new Promise ((resolve)=>setTimeout(resolve,300000)))();
 
     console.log("Initializing pair...");
     await xethLiqManager.initializePair();

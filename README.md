@@ -9,7 +9,7 @@ Connect with Metamask, then launch your new token with as much xETH liquidity as
 ### Mainnet
 xeth: `0x29B109625ac15BC4577d0b70ACB9e4E27F7C07E8`
 xlocker proxy: `0xAA13f1Fc73baB751Da08930007D4D847EeEafAA2`
-xethLiq proxy: ``
+xethLiq proxy: `0xddeffEf1230b33deCb43DcD52445a05F01077e9a`
 
 ### Ropsten
 xeth: `0xA2F864C1c1a27f257c10FfBCFAeCa252B5610B4b`
