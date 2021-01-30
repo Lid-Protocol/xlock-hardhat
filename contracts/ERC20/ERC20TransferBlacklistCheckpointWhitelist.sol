@@ -32,7 +32,7 @@ import "./SafeERC20.sol";
  * functions have been added to mitigate the well-known issues around setting
  * allowances. See {IERC20-approve}.
  */
-contract ERC20Blacklist is Context, IERC20 {
+contract ERC20TransferBlacklistCheckpointWhitelist is Context, IERC20 {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -47,8 +47,24 @@ contract ERC20Blacklist is Context, IERC20 {
     uint8 private _decimals;
 
     address public blacklistManager;
+    address public whitelistManager;
     mapping(address => bool) public sendBlacklist;
     mapping(address => bool) public receiveBlacklist;
+    mapping(address => bool) public checkpointWhitelist;
+
+    mapping(address => Checkpoint[]) private balances;
+    mapping(address => Checkpoint[]) private balancesWhitelisted;
+    uint256 private totalWhitelisted;
+    Checkpoint[] private totalsWhitelisted;
+    /// @dev `Checkpoint` is the structure that attaches a block number to a
+    ///  given value, the block number attached is the one that last changed the
+    ///  value
+    struct Checkpoint {
+        // `fromBlock` is the block number that the value was generated from
+        uint128 fromBlock;
+        // `value` is the amount of tokens at a specific block number
+        uint128 value;
+    }
 
     /**
      * @dev Sets the values for {name} and {symbol}, initializes {decimals} with
@@ -63,19 +79,29 @@ contract ERC20Blacklist is Context, IERC20 {
         string memory name_,
         string memory symbol_,
         uint256 amount,
-        address blacklistManager_
+        address blacklistManager_,
+        address whitelistManager_
     ) public {
         _name = name_;
         _symbol = symbol_;
         _decimals = 18;
         blacklistManager = blacklistManager_;
+        whitelistManager = whitelistManager_;
         _mint(msg.sender, amount);
     }
 
     modifier onlyBlacklistManager() {
         require(
             msg.sender == blacklistManager,
-            "ERC20Blacklist: sender is not blacklistManager"
+            "ERC20TransferBlacklistCheckpointWhitelist: sender is not blacklistManager"
+        );
+        _;
+    }
+
+    modifier onlyWhitelistManager() {
+        require(
+            msg.sender == whitelistManager,
+            "ERC20TransferBlacklistCheckpointWhitelist: sender is not blacklistManager"
         );
         _;
     }
@@ -92,6 +118,29 @@ contract ERC20Blacklist is Context, IERC20 {
         onlyBlacklistManager
     {
         sendBlacklist[sender] = isBlacklisted;
+    }
+
+    function setCheckpointWhitelist(address holder, bool isWhitelisted)
+        external
+        onlyWhitelistManager
+    {
+        checkpointWhitelist[holder] = isWhitelisted;
+    }
+
+    function whitelistAll(address[] calldata holders)
+        external
+        onlyWhitelistManager
+    {
+        for (uint256 i = 0; i < holders.length; i++) {
+            checkpointWhitelist[holders[i]] = true;
+        }
+    }
+
+    function transferWhitelistManager(address whitelistManager_)
+        external
+        onlyWhitelistManager
+    {
+        whitelistManager = whitelistManager_;
     }
 
     /**
@@ -267,6 +316,48 @@ contract ERC20Blacklist is Context, IERC20 {
         return true;
     }
 
+    ////////////////
+    // Query balance and whitelisted total supply in History
+    ////////////////
+
+    /// @dev Queries the whitelisted balance of `_owner` at a specific `_blockNumber`
+    /// @param _owner The address from which the balance will be retrieved
+    /// @param _blockNumber The block number when the balance is queried
+    /// @return The balance at `_blockNumber`
+    function balanceWhitelistedOfAt(address _owner, uint256 _blockNumber)
+        public
+        view
+        returns (uint256)
+    {
+        if (balancesWhitelisted[_owner].length == 0) return 0;
+        return getValueAt(balancesWhitelisted[_owner], _blockNumber);
+    }
+
+    /// @dev Queries the balance of `_owner` at a specific `_blockNumber`
+    /// @param _owner The address from which the balance will be retrieved
+    /// @param _blockNumber The block number when the balance is queried
+    /// @return The balance at `_blockNumber`
+    function balanceOfAt(address _owner, uint256 _blockNumber)
+        public
+        view
+        returns (uint256)
+    {
+        if (balances[_owner].length == 0) return 0;
+        return getValueAt(balances[_owner], _blockNumber);
+    }
+
+    /// @notice Total amount of tokens at a specific `_blockNumber`.
+    /// @param _blockNumber The block number when the totalSupply is queried
+    /// @return The total amount of tokens at `_blockNumber`
+    function totalWhitelistedSupplyAt(uint256 _blockNumber)
+        public
+        view
+        returns (uint256)
+    {
+        if (totalsWhitelisted.length == 0) return 0;
+        return getValueAt(totalsWhitelisted, _blockNumber);
+    }
+
     /**
      * @dev Moves tokens `amount` from `sender` to `recipient`.
      *
@@ -395,5 +486,88 @@ contract ERC20Blacklist is Context, IERC20 {
         address from,
         address to,
         uint256 amount
-    ) internal virtual {}
+    ) internal virtual {
+        _updateValueAtNow(balances[from], balanceOf(from).sub(amount));
+        _updateValueAtNow(balances[to], balanceOf(to).add(amount));
+        if (checkpointWhitelist[from] && !checkpointWhitelist[to]) {
+            _updateValueAtNow(
+                balancesWhitelisted[from],
+                balanceOf(from).sub(amount)
+            );
+            totalWhitelisted = totalWhitelisted.sub(amount);
+            _updateValueAtNow(totalsWhitelisted, totalWhitelisted);
+        } else if (!checkpointWhitelist[from] && checkpointWhitelist[to]) {
+            _updateValueAtNow(
+                balancesWhitelisted[to],
+                balanceOf(to).add(amount)
+            );
+            totalWhitelisted = totalWhitelisted.add(amount);
+            _updateValueAtNow(totalsWhitelisted, totalWhitelisted);
+        } else if (checkpointWhitelist[from] && checkpointWhitelist[to]) {
+            _updateValueAtNow(
+                balancesWhitelisted[from],
+                balanceOf(from).sub(amount)
+            );
+            _updateValueAtNow(
+                balancesWhitelisted[to],
+                balanceOf(to).add(amount)
+            );
+        }
+    }
+
+    ////////////////
+    // Internal helper functions to query and set a value in a snapshot array
+    ////////////////
+
+    /// @dev `getValueAt` retrieves the number of tokens at a given block number
+    /// @param checkpoints The history of values being queried
+    /// @param _block The block number to retrieve the value at
+    /// @return The number of tokens being queried
+    function getValueAt(Checkpoint[] storage checkpoints, uint256 _block)
+        internal
+        view
+        returns (uint256)
+    {
+        if (checkpoints.length == 0) return 0;
+
+        // Shortcut for the actual value
+        if (_block >= checkpoints[checkpoints.length - 1].fromBlock)
+            return checkpoints[checkpoints.length - 1].value;
+        if (_block < checkpoints[0].fromBlock) return 0;
+
+        // Binary search of the value in the array
+        uint256 min = 0;
+        uint256 max = checkpoints.length - 1;
+        while (max > min) {
+            uint256 mid = (max + min + 1) / 2;
+            if (checkpoints[mid].fromBlock <= _block) {
+                min = mid;
+            } else {
+                max = mid - 1;
+            }
+        }
+        return checkpoints[min].value;
+    }
+
+    /// @dev `updateValueAtNow` used to update the `balances` map and the
+    ///  `totalSupplyHistory`
+    /// @param checkpoints The history of data being updated
+    /// @param _value The new number of tokens
+    function _updateValueAtNow(Checkpoint[] storage checkpoints, uint256 _value)
+        internal
+    {
+        if (
+            (checkpoints.length == 0) ||
+            (checkpoints[checkpoints.length - 1].fromBlock < block.number)
+        ) {
+            Checkpoint storage newCheckPoint =
+                checkpoints[checkpoints.length + 1];
+            newCheckPoint.fromBlock = uint128(block.number);
+            newCheckPoint.value = uint128(_value);
+        } else {
+            Checkpoint storage oldCheckPoint =
+                checkpoints[checkpoints.length - 1];
+            oldCheckPoint.value = uint128(_value);
+        }
+    }
 }

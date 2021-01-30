@@ -19,12 +19,13 @@ interface IXLocker {
         address taxMan
     ) external returns (address token_, address pair_);
 
-    function launchERC20Blacklist(
+    function launchERC20TransferBlacklistCheckpointWhitelist(
         string calldata name,
         string calldata symbol,
         uint256 wadToken,
         uint256 wadXeth,
-        address blacklistManager
+        address blacklistManager,
+        address whitelistManager
     ) external returns (address token_, address pair_);
 
     function setBlacklistUniswapBuys(

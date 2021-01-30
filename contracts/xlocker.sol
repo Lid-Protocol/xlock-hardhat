@@ -3,7 +3,7 @@ pragma solidity =0.6.6;
 
 import "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol";
 import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
-import "./ERC20/ERC20Blacklist.sol";
+import "./ERC20/ERC20TransferBlacklistCheckpointWhitelist.sol";
 import "./ERC20/ERC20TransferTax.sol";
 import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
@@ -88,7 +88,13 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
 
         //Launch new token
         token_ = address(
-            new ERC20Blacklist(name, symbol, wadToken, address(0x0))
+            new ERC20TransferBlacklistCheckpointWhitelist(
+                name,
+                symbol,
+                wadToken,
+                address(0x0),
+                address(0x0)
+            )
         );
 
         //Lock symbol/xeth liquidity
@@ -100,19 +106,26 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
         return (token_, pair_);
     }
 
-    function launchERC20Blacklist(
+    function launchERC20TransferBlacklistCheckpointWhitelist(
         string calldata name,
         string calldata symbol,
         uint256 wadToken,
         uint256 wadXeth,
-        address blacklistManager
+        address blacklistManager,
+        address whitelistManager
     ) external override returns (address token_, address pair_) {
         //Checks
         _preLaunchChecks(wadToken, wadXeth);
 
         //Launch new token
         token_ = address(
-            new ERC20Blacklist(name, symbol, wadToken, address(this))
+            new ERC20TransferBlacklistCheckpointWhitelist(
+                name,
+                symbol,
+                wadToken,
+                address(this),
+                whitelistManager
+            )
         );
 
         //Lock symbol/xeth liquidity
@@ -169,7 +182,10 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
             msg.sender == pairBlacklistManager[pair],
             "xlocker: sender not blacklist manager for pair."
         );
-        ERC20Blacklist(token).setSendBlacklist(pair, isBlacklisted);
+        ERC20TransferBlacklistCheckpointWhitelist(token).setSendBlacklist(
+            pair,
+            isBlacklisted
+        );
     }
 
     //Sweeps liquidity provider fees for _sweepReceiver
@@ -208,8 +224,7 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
             token = IERC20(pair.token0());
         }
 
-        (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast) =
-            pair.getReserves();
+        (uint112 reserve0, uint112 reserve1, ) = pair.getReserves();
 
         uint256 burnedLP = pair.balanceOf(address(0));
         uint256 totalLP = pair.totalSupply();
