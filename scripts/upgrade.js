@@ -1,6 +1,6 @@
 const { ethers, upgrades } = require("hardhat");
-const XlockerAddress = "0x45a0A95Df3DAE8A9741328a0b7ce04DF55C22124";
-const XethLiqManagerAddress = "0x24a20012D9D1c4f62De50f89cDb7eDDf37385DF5";
+const XlockerAddress = "0xAA13f1Fc73baB751Da08930007D4D847EeEafAA2";
+const XethLiqManagerAddress = "0xddeffEf1230b33deCb43DcD52445a05F01077e9a";
 
 async function main() {
     console.log("Upgrading xlocker..")

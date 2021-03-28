@@ -241,7 +241,14 @@ contract XLOCKER is Initializable, IXLocker, OwnableUpgradeSafe {
             burnedXeth = reserveLockedXeth.sub(
                 UniswapV2Library.getAmountOut(
                     //Circulating supply, max that could ever be sold (amountIn)
-                    token.totalSupply().sub(reserveLockedToken),
+                    token
+                        .totalSupply()
+                        .sub(
+                        token.balanceOf(
+                            0x000000000000000000000000000000000000dEaD //burn address
+                        )
+                    )
+                        .sub(reserveLockedToken),
                     //Burned token in Uniswap reserves (reserveIn)
                     reserveLockedToken,
                     //Burned xEth in Uniswap reserves (reserveOut)

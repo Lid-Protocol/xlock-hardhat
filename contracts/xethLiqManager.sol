@@ -70,47 +70,31 @@ contract XethLiqManager is Initializable, OwnableUpgradeSafe {
     }
 
     function updatePair() external onlyOwner {
+        require(address(_xeth).balance < 150 ether, "xeth has too much ETH");
         rebalance();
 
-        //Increase/Decrease liq
         uint256 currentLockedXeth =
             _xeth.balanceOf(address(_pair)).mul(
                 _pair.balanceOf(address(this))
             ) / _pair.totalSupply();
-        uint256 expectedLockedXeth =
-            currentLockedXeth.add(address(_xeth).balance) / 2;
 
-        if (currentLockedXeth > expectedLockedXeth) {
-            uint256 delta = currentLockedXeth.sub(expectedLockedXeth);
-            _router.removeLiquidityETH(
-                address(_xeth),
-                _xeth.balanceOf(address(_pair)).mul(delta) /
-                    _pair.totalSupply(),
-                delta.sub(1000),
-                delta.sub(1000),
-                address(this),
-                now
-            );
-            _xeth.deposit{value: address(this).balance}();
-            _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
-        } else if (
-            currentLockedXeth < expectedLockedXeth &&
-            currentLockedXeth < _maxLiq
-        ) {
-            uint256 delta = expectedLockedXeth.sub(currentLockedXeth);
-            _xeth.xlockerMint(delta.mul(2).add(1 ether), address(this));
-            _xeth.withdraw(delta);
-            _router.addLiquidityETH{value: delta}(
-                address(_xeth),
-                delta,
-                delta.sub(1 ether),
-                delta.sub(1 ether),
-                address(this),
-                now
-            );
-            _xeth.deposit{value: address(this).balance}();
-            _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
+        uint256 delta;
+        if (currentLockedXeth > 150 ether) {
+            delta = 150 ether - address(_xeth).balance;
+        } else {
+            delta = currentLockedXeth / 2;
         }
+
+        _router.removeLiquidityETH(
+            address(_xeth),
+            _pair.totalSupply().mul(delta) / _xeth.balanceOf(address(_pair)),
+            delta.sub(0.1 ether),
+            delta.sub(0.1 ether),
+            address(this),
+            now
+        );
+        _xeth.deposit{value: address(this).balance}();
+        _xeth.transfer(address(0x0), _xeth.balanceOf(address(this)));
     }
 
     function rebalance() public onlyOwner {
