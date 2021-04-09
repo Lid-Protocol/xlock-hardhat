@@ -85,6 +85,8 @@ contract XethLiqManager is Initializable, OwnableUpgradeSafe {
             delta = currentLockedXeth / 2;
         }
 
+        _pair.approve(address(_router), uint256(-1));
+
         _router.removeLiquidityETH(
             address(_xeth),
             _pair.totalSupply().mul(delta) / _xeth.balanceOf(address(_pair)),
